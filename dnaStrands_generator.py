@@ -56,7 +56,7 @@ def handleArgs(args):
         elif key == '-p':
             numPoints = int(val)
             if numPoints == 0:
-                numPoints = random.rand(1, 100)
+                numPoints = random.randint(1, 100)
         elif key == '-o':
             output = val
         # now, the optional argument

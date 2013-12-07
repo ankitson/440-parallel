@@ -28,9 +28,8 @@ def k_means_clustering (k, centroids, points):
 
         # check if centroids match
         if (set(centroids) == set(recalculatedCentroids)):
-	    
-	    print "Clustering completed in " + str(iterations) + " iterations"
-	    return recalculatedCentroids
+            print "Clustering completed in " + str(iterations) + " iterations"
+            return recalculatedCentroids
 
 	# re-iterate if new and old centroids do not match
 	centroids = copy.deepcopy(recalculatedCentroids)
@@ -65,6 +64,6 @@ if __name__ == "__main__":
     centroids_str = '|'.join([str(pt) for pt in result])
 
     print "Sequential clustering of 2D points took " + str(end_time - start_time) + " seconds"
-    print "Centroids: " + points_str
+    print "Centroids: " + centroids_str
 
         

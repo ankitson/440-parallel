@@ -6,7 +6,6 @@ import sys
 import time
 
 def get_centroid (points):
-
     strandLength = len(points[0])
     centroid = []
 
@@ -61,10 +60,10 @@ if __name__ == "__main__":
     strPoints = [line.strip() for line in open(sys.argv[2])]
     if (len(strPoints) == 0):
         print "Empty file!"
-	sys.exit(0)
+        sys.exit(0)
     points = []
     for s in strPoints:
-        points.append(DNAPoint(s.split(',')))
+        points.append(DNAPoint(s))
 
     if (k > len(points)):
             print "ERROR: k must be at most the number of data points"
