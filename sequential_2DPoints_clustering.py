@@ -62,7 +62,9 @@ if __name__ == "__main__":
     start_time = time.time()
     result = k_means_clustering(k, centroids, points)
     end_time = time.time()
-    #print "Final centroids = " + Point.stringify(result)
+    centroids_str = '|'.join([str(pt) for pt in result])
+
     print "Sequential clustering of 2D points took " + str(end_time - start_time) + " seconds"
+    print "Centroids: " + points_str
 
         
