@@ -9,7 +9,7 @@ def get_centroid (points):
     strandLength = len(points[0])
     centroid = []
 
-    for dim in range (strandLength):
+    for dim in xrange(strandLength):
         bases = {'a':0, 'c':0, 'g':0, 't':0}
         for point in points:
             bases[point[dim]] += 1
@@ -31,18 +31,19 @@ def k_means_clustering (points, k, centroids):
 
         # make k clusters with dna_points in each cluster
         clusters = [[]] * k
+        print clusters
         for point in points:
             new_clusterPoints = point.find_closest_point(centroids)
             clusters[new_clusterPoints].append(point)
 
             # recalculate the new centroids
             for cluster in clusters:
-                    recalculatedCentroids.append(get_centroid(cluster))
+                recalculatedCentroids.append(get_centroid(cluster))
 
             # check if centroids match
             if (set(centroids) == set(recalculatedCentroids)):
-                    print "Clustering completed in " + str(iteration) + " iterations"
-                    return recalculatedCentroids
+                print "Clustering completed in " + str(iterations) + " iterations"
+                return recalculatedCentroids
 
             # re-iterate if new and old centroids do not match
             centroids = copy.deepcopy(recalculatedCentroids)

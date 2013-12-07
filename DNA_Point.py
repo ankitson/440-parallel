@@ -4,6 +4,12 @@ class DNAPoint():
 
     dna = []
 
+    def __str__(self):
+        return "DNA Point: " + str(self.dna)
+
+    def __repr__(self):
+        return self.__str__()
+
     def __init__(self, dnaList):
         self.dna = dnaList
 
@@ -15,13 +21,13 @@ class DNAPoint():
 
     def __cmp__(self, other):
         if(len(self) != len(other)):
-            return False
+            return TypeError
 
         for i in xrange(len(other)):
             if (cmp(self[i],other[i]) != 0):
-                return False
+                return cmp(self[i],other[i])
 
-        return True
+        return 0
 
     def __hash__(self):
         return hash(tuple(self.dna))
