@@ -5,7 +5,7 @@ class DNAPoint():
     dna = []
 
     def __str__(self):
-        return "DNA Point: " + str(self.dna)
+        return "DNA(" + ''.join(self.dna) + ")"
 
     def __repr__(self):
         return self.__str__()

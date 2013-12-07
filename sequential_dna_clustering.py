@@ -31,7 +31,6 @@ def k_means_clustering (points, k, centroids):
 
         # make k clusters with dna_points in each cluster
         clusters = [[]] * k
-        print clusters
         for point in points:
             new_clusterPoints = point.find_closest_point(centroids)
             clusters[new_clusterPoints].append(point)
@@ -81,6 +80,8 @@ if __name__ == "__main__":
     start_time = time.time()
     result = k_means_clustering(points, k, centroids)
     end_time = time.time()
+    print "Centroids: ", result
     print "Sequential Kmeans on DNA data set took " + str(end_time - start_time) + " second(s)"
+
 
 
