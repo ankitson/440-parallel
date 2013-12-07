@@ -42,7 +42,7 @@ def k_means_clustering (points, k, centroids):
             # check if centroids match
             if (set(centroids) == set(recalculatedCentroids)):
                 print "Clustering completed in " + str(iterations) + " iterations"
-                return recalculatedCentroids
+                return set(recalculatedCentroids)
 
             # re-iterate if new and old centroids do not match
             centroids = copy.deepcopy(recalculatedCentroids)
