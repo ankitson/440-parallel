@@ -10,7 +10,11 @@ class Point:
         self.y = y
 
     def __cmp__(self, other):
-        return cmp(self.x, other.x) and cmp(self.y, other.y)
+        xcmp = cmp(self.x,other.x)
+        if xcmp != 0:
+            return xcmp
+        else:
+            return cmp(self.y,other.y)
 
     def __hash__(self):
         return hash((self.x, self.y))
