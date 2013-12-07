@@ -2,6 +2,7 @@ import copy
 import sys
 import random
 import time
+import csv
 
 from Point import Point
 
@@ -16,7 +17,6 @@ def k_means_clustering (k, centroids, points):
 
         # This is a 2-d list where each inner list is a list of points
         # associated with the corresponding centroid/cluster
-
         clusters = [[]] * k
         for point in points:
             new_clusterPoints = point.find_closest_point(centroids)
@@ -48,24 +48,17 @@ if __name__ == "__main__":
         sys.exit(0)
     
     # get the points from generated file
-    strPoints = [line.strip() for line in open(sys.argv[2])]
-    if (len(strPoints) == 0):
-        print "Give file is empty!"
-        sys.exit(0)
     points = []
-    for s in strPoints:
-        list_str = s.split(',')
-        points.append(Point(float(list_str[0]), float(list_str[1])))
+    csv_reader = csv.reader(open(sys.argv[2], 'r'))
+    for row in csv_reader:
+        x = float(row[0])
+        y = float(row[1])
+        points.append(Point(x,y))
 
     # choose centroids to start with
-    centroids = []
-    while(len(centroids) != k):
-        p = points[random.randint(0, len(points))]
-        if (p not in centroids):
-            centroids.append(p)
+    centroids = random.sample(points,k)
 
     # Run the clustering algorithm
-    
     start_time = time.time()
     result = k_means_clustering(k, centroids, points)
     end_time = time.time()

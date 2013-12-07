@@ -24,8 +24,8 @@ class Point:
         y1 = float(self.y)
         y2 = float(other.y)
 
-        xdist = math.pow(math.abs(x1-x2),2)
-        ydist = math.pow(math.abs(y1-y2),2)
+        xdist = math.pow(abs(x1-x2),2)
+        ydist = math.pow(abs(y1-y2),2)
         return math.sqrt(xdist + ydist)
 
     #Return the point out of points closest to this one
@@ -42,7 +42,7 @@ class Point:
                 mindist = dist
                 minptidx = idx
 
-        return points[minptidx]
+        return minptidx
 
     @staticmethod
     def getAverage(points):

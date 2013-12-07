@@ -49,4 +49,4 @@ class DNAPoint():
                 mindist = dist
                 minptidx = idx
 
-        return points[minptidx]
+        return minptidx

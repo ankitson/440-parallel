@@ -82,7 +82,7 @@ writer = csv.writer(open(output, "w"))
 # step 1: generate each 2D centroid
 centroids_radii = []
 minDistance = 0
-for i in range(0, numClusters):
+for i in xrange(numClusters):
     centroid_radius = drawOrigin(maxValue)
     # is it far enough from the others?
     while (tooClose(centroid_radius, centroids_radii, minDistance)):
@@ -93,11 +93,11 @@ for i in range(0, numClusters):
 points = []
 minClusterVar = 0
 maxClusterVar = 0.5
-for i in range(0, numClusters):
+for i in xrange(numClusters):
     # compute the variance for this cluster
     variance = numpy.random.uniform(minClusterVar, maxClusterVar)
     cluster = centroids_radii[i]
-    for j in range(0, numPoints):
+    for j in xrange(numPoints):
         # generate a 2D point with specified variance
         # point is normally-distributed around centroids[i]
         x, y = numpy.random.normal(cluster, variance)
