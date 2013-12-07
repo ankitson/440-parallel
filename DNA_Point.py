@@ -14,11 +14,13 @@ class DNAPoint():
         return self.dna[i]
 
     def __cmp__(self, other):
-	if(len(self) != len(other)):
+        if(len(self) != len(other)):
             return False
-        for i in range (len(other)):
-            if(self[i] != other[i]):
+
+        for i in xrange(len(other)):
+            if (cmp(self[i],other[i]) != 0):
                 return False
+
         return True
 
     def __hash__(self):
@@ -27,24 +29,24 @@ class DNAPoint():
     def distance(self, other):
         if (len(self) != len(other)):
             return None
-        dist = len(self)
-        for i in range(0, len(self)):
+
+        dist = 0
+        for i in xrange(len(self)):
             if (self[i] != other[i]):
-                dist-= 1
+                dist += 1
         return dist
 
-    # check the deal with max int
     def find_closest_point(self, points):
-	
         if (len(points) == 0):
             return None
-        max_dist = -sys.maxint - 1
-        cur_centroid = 0
-        for i in xrange(len(points)):
-            icentroid_dist = self.distance(points[i])
-            if (icentroid_dist > max_dist):
-                max_dist = icentroid_dist
-                cur_centroid = i
-        return cur_centroid
+        pts_idxs = enumerate(points)
+        pts_indxs = [(idx,self.distance(pt)) for (idx,pt) in pts_idxs]
 
+        mindist = sys.maxint
+        minptidx = 0
+        for (idx,dist) in pts_indxs:
+            if dist < mindist:
+                mindist = dist
+                minptidx = idx
 
+        return points[minptidx]
