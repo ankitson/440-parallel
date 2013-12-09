@@ -49,7 +49,7 @@ class Point:
         return minptidx
 
     @staticmethod
-    def getAverage(points):
+    def average(points):
         if (len(points) == 0):
             return None
 
